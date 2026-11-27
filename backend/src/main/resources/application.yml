@@ -1,0 +1,24 @@
+server:
+  port: ${PORT:8080}
+spring:
+  application:
+    name: feedback-backend
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:file:./data/feedback;MODE=MySQL}
+    username: ${DATABASE_USERNAME:sa}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+feedback:
+  upload-dir: ${UPLOAD_DIR:uploads}
+  max-file-size: 5242880
+  rate-limit:
+    max-requests: 10
+    window-seconds: 60
